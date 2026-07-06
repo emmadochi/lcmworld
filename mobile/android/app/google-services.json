@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "624137454674",
+    "project_id": "lcmworld",
+    "storage_bucket": "lcmworld.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:624137454674:android:9f0f7f0b3f3963d8708b8b",
+        "android_client_info": {
+          "package_name": "org.lifechangerstouch.lcmworld"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC6mkQlkZW0dDQ7o80evzj9PHj7WAjG4js"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
