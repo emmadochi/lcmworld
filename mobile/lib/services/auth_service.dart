@@ -4,7 +4,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 
 class AuthService {
   // Using 10.0.2.2 for Android Emulator to connect to localhost
-  static const String baseUrl = 'http://192.168.100.59:8000/api';
+  static const String baseUrl = 'https://lcmworld.lifechangerstouch.org/api';
   final Dio _dio = Dio();
 
   static const String _tokenKey = 'auth_token';

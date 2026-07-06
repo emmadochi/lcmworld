@@ -15,7 +15,7 @@ class ApkInstallerService {
   }) async {
     // 1. Log the download in Analytics
     try {
-      await _dio.post('http://192.168.100.59:8000/api/admin/apps/$appId/track', data: {'type': 'download'});
+      await _dio.post('https://lcmworld.lifechangerstouch.org/api/admin/apps/$appId/track', data: {'type': 'download'});
     } catch (e) {
       print('Failed to track download: $e');
     }
