@@ -10,3 +10,5 @@ build/
 vendor/
 node_modules/
 .dart_tool/
+
+/mobile/
