@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Admin Login - LCMWorld</title>
+    <title>Admin Login - Lifechangers Apps</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
@@ -48,7 +48,7 @@
 
     <div class="glass-panel w-full max-w-md p-8 rounded-2xl relative z-10">
         <div class="text-center mb-8">
-            <h1 class="text-3xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-cyan-400 to-blue-500">LCMWorld</h1>
+            <h1 class="text-3xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-cyan-400 to-blue-500">Lifechangers Apps</h1>
             <p class="text-gray-400 mt-2 text-sm">Secure Admin Authentication</p>
         </div>
 

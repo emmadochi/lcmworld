@@ -7,15 +7,24 @@ use Illuminate\Http\Request;
 
 use App\Models\Analytic;
 use App\Models\MobileApp;
+use App\Models\User;
 use Illuminate\Support\Facades\DB;
 use Carbon\Carbon;
 
 class AnalyticsController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
+        $days = (int) $request->input('days', 7);
+        if (!in_array($days, [7, 14, 30, 90])) {
+            $days = 7;
+        }
+
         $totalDownloads = Analytic::where('event_type', 'download')->count();
         $totalViews = Analytic::where('event_type', 'view')->count();
+        $totalUsers = User::count();
+        $newUsersInPeriod = User::where('created_at', '>=', Carbon::now()->subDays($days))->count();
+        $conversionRate = ($totalViews > 0) ? round(($totalDownloads / $totalViews) * 100, 1) : 0;
 
         // Most downloaded app
         $topAppStats = Analytic::where('event_type', 'download')
@@ -26,17 +35,28 @@ class AnalyticsController extends Controller
             
         $topApp = $topAppStats ? MobileApp::find($topAppStats->mobile_app_id) : null;
 
-        // Data for Downloads Over Time (Last 7 Days)
+        // Data for Downloads & Signups Over Time
         $chartLabels = [];
-        $chartData = [];
-        for ($i = 6; $i >= 0; $i--) {
+        $downloadsData = [];
+        $signupsData = [];
+        $viewsData = [];
+
+        for ($i = $days - 1; $i >= 0; $i--) {
             $date = Carbon::now()->subDays($i)->format('Y-m-d');
             $chartLabels[] = Carbon::parse($date)->format('M d');
             
-            $count = Analytic::where('event_type', 'download')
+            $dlCount = Analytic::where('event_type', 'download')
                 ->whereDate('created_at', $date)
                 ->count();
-            $chartData[] = $count;
+            $downloadsData[] = $dlCount;
+
+            $vwCount = Analytic::where('event_type', 'view')
+                ->whereDate('created_at', $date)
+                ->count();
+            $viewsData[] = $vwCount;
+
+            $suCount = User::whereDate('created_at', $date)->count();
+            $signupsData[] = $suCount;
         }
 
         // Data for Top 5 Apps (Downloads)
@@ -57,13 +77,18 @@ class AnalyticsController extends Controller
             }
         }
 
+        // Latest registered users
+        $recentUsers = User::withCount('reviews')->latest()->limit(8)->get();
+
+        // Recent events
         $recentEvents = Analytic::with('mobileApp')->latest()->limit(10)->get();
 
         return view('admin.analytics.index', compact(
-            'totalDownloads', 'totalViews', 'topApp', 
-            'chartLabels', 'chartData', 
-            'topAppsLabels', 'topAppsData', 
-            'recentEvents'
+            'totalDownloads', 'totalViews', 'totalUsers', 'newUsersInPeriod',
+            'conversionRate', 'topApp', 'days',
+            'chartLabels', 'downloadsData', 'signupsData', 'viewsData',
+            'topAppsLabels', 'topAppsData',
+            'recentUsers', 'recentEvents'
         ));
     }
 }

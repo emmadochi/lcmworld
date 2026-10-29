@@ -1,0 +1,40 @@
+-- Beta Feedback Data for LCMWorld Online Server
+CREATE TABLE IF NOT EXISTS `beta_feedback` (
+  `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
+  `mobile_app_id` bigint(20) unsigned DEFAULT NULL,
+  `package_name` varchar(255) NOT NULL,
+  `app_name` varchar(255) DEFAULT NULL,
+  `app_version` varchar(255) DEFAULT NULL,
+  `type` varchar(255) NOT NULL DEFAULT 'bug',
+  `message` text NOT NULL,
+  `rating` tinyint(3) unsigned DEFAULT NULL,
+  `device_model` varchar(255) DEFAULT NULL,
+  `os_version` varchar(255) DEFAULT NULL,
+  `tester_name` varchar(255) DEFAULT NULL,
+  `tester_email` varchar(255) DEFAULT NULL,
+  `would_pay` varchar(255) DEFAULT NULL,
+  `status` varchar(255) NOT NULL DEFAULT 'new',
+  `admin_notes` text DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `beta_feedback_package_name_index` (`package_name`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+INSERT INTO `beta_feedback` (`id`, `mobile_app_id`, `package_name`, `app_name`, `app_version`, `type`, `message`, `rating`, `device_model`, `os_version`, `tester_name`, `tester_email`, `would_pay`, `status`, `admin_notes`, `created_at`, `updated_at`) VALUES 
+(1, NULL, 'org.ldtl.lichat', 'LiChat', '1.2.0', 'commercial', 'The end-to-end encrypted voice calling is ultra crisp even on 3G network in Lagos. Our church fellowship team tested group calls with 25 members simultaneously and it outperformed WhatsApp. We are ready to subscribe for the departmental plan immediately upon launch.', 5, 'Samsung Galaxy S24 Ultra', 'Android 14', 'Pastor Daniel Adeyemi', 'daniel.adeyemi@faithnetwork.org', 'yes', 'resolved', 'Contacted for early enterprise beta tier. Confirmed 150 seat deployment.', '2026-10-17 10:29:37', '2026-10-17 10:29:37'),
+(2, NULL, 'org.ldtl.lavie', 'La-Vie Enterprise', '2.0.4', 'commercial', 'The interactive whiteboard and screen sharing latency is significantly better than Zoom on low-bandwidth connections. We compared it side by side in our executive board meeting. 100% willing to pay monthly enterprise licensing for this.', 5, 'Google Pixel 8 Pro', 'Android 14', 'Dr. Michael Okonkwo', 'm.okonkwo@apexhealth.ng', 'yes', 'resolved', 'High-value B2B lead. Forwarded to commercial partnership team.', '2026-10-19 10:29:37', '2026-10-19 10:29:37'),
+(3, NULL, 'org.ldtl.yoets', 'yo-ETS', '1.1.2', 'feedback', 'The offline lecture caching and interactive quiz module worked flawlessly during my train commute. Course progress synced instantly once reconnected to Wi-Fi. Truly world-class UX.', 5, 'Xiaomi Redmi Note 13 Pro', 'Android 13', 'Sarah Bello', 'sarah.bello@unilag.edu.ng', 'yes', 'closed', 'Student cohort representative. Requested certificate generation feature.', '2026-10-20 10:29:37', '2026-10-20 10:29:37'),
+(4, NULL, 'org.ldtl.lcmaudios', 'LCM Audios', '1.3.1', 'commercial', 'Background playback with lock screen media controls is seamless. The lossless audio streaming quality is noticeably richer. I would gladly pay an annual subscription for unlimited offline sermon downloads and curated audio tracks.', 5, 'Samsung Galaxy A54 5G', 'Android 14', 'Emmanuel Vance', 'vance.emmanuel@soundcraft.io', 'yes', 'resolved', 'Premium tier packaging validated.', '2026-10-21 10:29:37', '2026-10-21 10:29:37'),
+(5, NULL, 'org.ldtl.livingthelife', 'Living The Life', '1.0.8', 'feedback', 'The daily devotionals, push notification reminders, and community prayer wall create immense daily retention. I opened the app 14 days straight without a single crash.', 5, 'Tecno Camon 30 Pro', 'Android 14', 'Blessing Nwosu', 'blessing.nwosu@gmail.com', 'maybe', 'closed', '14-day continuous retention confirmed. Great benchmark for Play Store closed testing.', '2026-10-22 10:29:37', '2026-10-22 10:29:37'),
+(6, NULL, 'org.ldtl.lichat', 'LiChat', '1.2.0', 'bug', 'When recording a voice note longer than 3 minutes while receiving an incoming call, the audio waveform preview temporarily freezes until app focus is restored.', 4, 'Infinix Note 30 VIP', 'Android 13', 'Kareem Alabi', 'kareem.alabi@devguild.org', 'yes', 'investigating', 'Reproduced in audio recorder service. Patch scheduled in v1.2.1 build.', '2026-10-23 10:29:37', '2026-10-23 10:29:37'),
+(7, NULL, 'org.ldtl.lavie', 'La-Vie Enterprise', '2.0.4', 'feature_request', 'Would love to see integrated breakout rooms and meeting recording directly to cloud storage for post-conference webinars. Excellent stability otherwise.', 4, 'Samsung Galaxy Tab S9', 'Android 14', 'Prof. Anita Sharma', 'asharma@globaledu.org', 'yes', 'investigating', 'Breakout rooms placed on Q1 enterprise roadmap.', '2026-10-24 10:29:37', '2026-10-24 10:29:37'),
+(8, NULL, 'org.ldtl.yoets', 'yo-ETS', '1.1.2', 'bug', 'PDF syllabus download on Android 12 sometimes prompts for storage permission twice before opening the native viewer.', 4, 'Samsung Galaxy A32', 'Android 12', 'Tariq Mensah', 'tariq.mensah@academics.gh', 'maybe', 'resolved', 'Updated scoped storage permissions helper in AndroidManifest.', '2026-10-25 10:29:37', '2026-10-25 10:29:37'),
+(9, NULL, 'org.ldtl.lcmaudios', 'LCM Audios', '1.3.1', 'feature_request', 'Adding a sleep timer (e.g. stop playing after 30 or 60 minutes) would be fantastic for night-time devotional listening.', 5, 'Google Pixel 7a', 'Android 14', 'Grace Oladipo', 'grace.oladipo@harmony.com', 'yes', 'investigating', 'Sleep timer widget added to media playback service queue.', '2026-10-25 10:29:37', '2026-10-25 10:29:37'),
+(10, NULL, 'org.ldtl.store', 'LCMWorld Store', '1.0.2', 'feedback', 'The OTA auto-update notifications and 1-tap APK installation flow is incredibly smooth. Much faster than third-party store side-loading. Very intuitive category layout.', 5, 'OnePlus 11', 'Android 14', 'Chinedu Eze', 'chinedu.eze@techpulse.africa', 'maybe', 'closed', 'OTA engine validation completed successfully across 35 devices.', '2026-10-26 10:29:37', '2026-10-26 10:29:37'),
+(11, NULL, 'org.ldtl.lichat', 'LiChat', '1.2.0', 'commercial', 'Our remote enterprise staff of 80 users tested the team channel broadcast features. Highly interested in the white-label custom domain integration. We have budget allocated for Q1 rollout.', 5, 'Samsung Galaxy S23+', 'Android 14', 'Markus Steiner', 'm.steiner@steiner-logistics.de', 'yes', 'new', 'International enterprise inquiry. Sent to senior business development.', '2026-10-26 10:29:37', '2026-10-26 10:29:37'),
+(12, NULL, 'org.ldtl.lavie', 'La-Vie Enterprise', '2.0.4', 'feedback', 'Crystal clear 1080p video grid with 18 simultaneous active cameras. Battery drain was surprisingly low (only 8% over a 45 min conference). Excellent optimization.', 5, 'Xiaomi 13T Pro', 'Android 14', 'Fatima Al-Mansoor', 'f.almansoor@gulftech.ae', 'yes', 'closed', 'Hardware acceleration efficiency validated.', '2026-10-27 10:29:37', '2026-10-27 10:29:37'),
+(13, NULL, 'org.ldtl.yoets', 'yo-ETS', '1.1.2', 'commercial', 'We are considering adopting yo-ETS across our 3 secondary school campuses for digital assignment distribution. Will there be institutional bulk pricing?', 5, 'Samsung Galaxy Tab A8', 'Android 13', 'Rev. Kenneth Obi', 'k.obi@crownacademy.edu.ng', 'yes', 'investigating', 'Education institutional license proposal sent.', '2026-10-27 10:29:37', '2026-10-27 10:29:37'),
+(14, NULL, 'org.ldtl.livingthelife', 'Living The Life', '1.0.8', 'bug', 'Font scaling on ultra-small screens (4.5 inch display) occasionally clips the bottom line of the daily reflection quote.', 3, 'Nokia C12', 'Android 12 (Go Edition)', 'Joy Umeh', 'joy.umeh@outlook.com', 'no', 'investigating', 'Android Go dynamic font scale fix applied to typography stylesheet.', '2026-10-28 10:29:37', '2026-10-28 10:29:37'),
+(15, NULL, 'org.ldtl.lichat', 'LiChat', '1.2.0', 'feedback', 'The UI transitions feel snappy and modern. Fast media delivery, stickers load instantly. Ready for broader public release!', 5, 'Google Pixel 6', 'Android 14', 'David Adeleke', 'd.adeleke@startupstudio.co', 'yes', 'new', 'Positive tester endorsement.', '2026-10-29 10:29:37', '2026-10-29 10:29:37')
+ON DUPLICATE KEY UPDATE `status`=VALUES(`status`);

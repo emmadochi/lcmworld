@@ -20,8 +20,8 @@
 @endif
 
 <!-- Documents Table -->
-<div class="glass-panel rounded-xl border border-gray-800 overflow-hidden">
-    <table class="w-full text-left">
+<div class="glass-panel rounded-xl border border-gray-800 overflow-x-auto">
+    <table class="w-full text-left min-w-[580px]">
         <thead class="bg-gray-800/50 border-b border-gray-800 text-gray-400 text-sm">
             <tr>
                 <th class="px-6 py-4 font-medium">Title</th>

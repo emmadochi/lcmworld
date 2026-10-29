@@ -14,11 +14,15 @@ Route::get('/user', function (Request $request) {
 // Auth Routes
 Route::post('/register', [AuthController::class, 'register']);
 Route::post('/login', [AuthController::class, 'login']);
+Route::post('/google-auth', [AuthController::class, 'googleAuth']);
+Route::post('/auth/google', [AuthController::class, 'googleAuth']);
 Route::post('/logout', [AuthController::class, 'logout'])->middleware('auth:sanctum');
 
 Route::prefix('admin')->group(function () {
     Route::get('/apps', [MobileAppController::class, 'index']);
     Route::get('/apps/featured', [MobileAppController::class, 'featured']);
+    Route::get('/apps/{id}/download', [MobileAppController::class, 'download']);
+    Route::get('/media/{path}', [MobileAppController::class, 'media'])->where('path', '.*');
     Route::get('/categories', [MobileAppController::class, 'categories']);
     Route::post('/apps/{id}/track', [MobileAppController::class, 'track']);
     
@@ -28,4 +32,13 @@ Route::prefix('admin')->group(function () {
 
     // Documents
     Route::get('/documents', [DocumentController::class, 'index']);
+
+    // Beta Feedback & OTA Update Checker
+    Route::get('/apps/check-update', [\App\Http\Controllers\Api\BetaController::class, 'checkUpdate']);
+    Route::post('/feedback', [\App\Http\Controllers\Api\BetaController::class, 'submitFeedback']);
 });
+
+// Direct public API aliases
+Route::get('/apps/check-update', [\App\Http\Controllers\Api\BetaController::class, 'checkUpdate']);
+Route::post('/feedback', [\App\Http\Controllers\Api\BetaController::class, 'submitFeedback']);
+
