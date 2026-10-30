@@ -461,21 +461,14 @@ Add a button or ListTile inside your Settings screen, Side Drawer, or Profile:
 
 ```dart
 ListTile(
-  leading: const Icon(Icons.bug_report_outlined, color: Colors.blueAccent),
-  title: const Text('Beta Feedback & Bug Report'),
-  subtitle: const Text('Help us improve before official launch'),
+  leading: const Icon(Icons.rate_review_outlined, color: Colors.blueAccent),
+  title: const Text('Beta Tester Feedback'),
+  subtitle: const Text('Report bugs & submit your review'),
   onTap: () {
-    LcmBridge.showFeedbackDialog(
-      context,
-      packageName: 'org.ldtl.lichat',
-      appName: 'LiChat',
-      currentVersion: '1.0.0',
-    );
+    // Directly triggers the Google Form in browser
+    LcmBridge.openGoogleFeedbackForm();
   },
 )
-
-// Or open the official Google Form directly:
-LcmBridge.openGoogleFeedbackForm();
 ```
 
 ---
