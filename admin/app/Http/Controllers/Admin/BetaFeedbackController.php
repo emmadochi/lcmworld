@@ -372,6 +372,9 @@ class BetaFeedbackController extends Controller
         $feedback = BetaFeedback::findOrFail($id);
         $feedback->delete();
 
+        return back()->with('success', 'Feedback entry removed.');
+    }
+
     public function seedSamples()
     {
         $this->ensureTableExists();
