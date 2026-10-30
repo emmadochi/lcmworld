@@ -564,6 +564,57 @@
             transform: translateY(2px);
         }
 
+        /* Beta Tester Feedback Button */
+        .btn-beta-report {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            width: 100%;
+            max-width: 420px;
+            background: #FFFFFF;
+            color: #1E293B;
+            text-decoration: none;
+            font-size: 0.95rem;
+            font-weight: 700;
+            padding: 13px 20px;
+            border-radius: var(--radius-md);
+            border: 1.5px solid #E2E8F0;
+            box-shadow: 0 2px 8px -1px rgba(0, 0, 0, 0.06);
+            transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+            cursor: pointer;
+            position: relative;
+        }
+
+        .btn-beta-report:hover {
+            transform: translateY(-2px);
+            border-color: #2563EB;
+            color: #1D4ED8;
+            box-shadow: 0 6px 18px -2px rgba(37, 99, 235, 0.15);
+            background: #F8FAFC;
+        }
+
+        .btn-beta-report svg {
+            color: #2563EB;
+            transition: transform 0.2s ease;
+        }
+
+        .btn-beta-report:hover svg {
+            transform: scale(1.1);
+        }
+
+        .btn-beta-badge {
+            font-size: 0.7rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.04em;
+            background: rgba(37, 99, 235, 0.1);
+            color: #1D4ED8;
+            padding: 2px 8px;
+            border-radius: var(--radius-full);
+            margin-left: auto;
+        }
+
         .btn-caption {
             font-size: 0.8rem;
             color: var(--text-muted);
@@ -952,7 +1003,7 @@
                 <div class="app-headings">
                     <div class="app-title-group">
                         <h2 class="app-name">LCMWorld</h2>
-                        <span class="version-badge">v1.0.1 Stable</span>
+                        <span class="version-badge">v1.0.3 Stable</span>
                     </div>
                     <p class="app-tagline">
                         Your direct mobile hub for church announcements, service updates, internal documents, and enterprise ministry tools.
@@ -964,7 +1015,7 @@
             <div class="specs-container">
                 <div class="spec-box">
                     <div class="spec-label">Download Size</div>
-                    <div class="spec-content highlight-emerald">⚡ 18.4 MB</div>
+                    <div class="spec-content highlight-emerald">⚡ 18.0 MB</div>
                 </div>
                 <div class="spec-box">
                     <div class="spec-label">Architecture</div>
@@ -988,6 +1039,17 @@
                     </svg>
                     <span>Download LCMWorld APK</span>
                 </a>
+
+                <!-- Beta Tester Feedback Button (Direct to Google Form) -->
+                <a href="https://docs.google.com/forms/d/e/1FAIpQLSdr8vi1ev9eexC1asmucTcdMU3Oks8hA4xEZ1vxtnIZS2EkaA/viewform" target="_blank" rel="noopener noreferrer" class="btn-beta-report" id="btn-beta-feedback">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
+                        <line x1="12" y1="11" x2="12" y2="11.01"></line>
+                        <line x1="12" y1="7" x2="12" y2="9"></line>
+                    </svg>
+                    <span>Submit Beta Tester Feedback</span>
+                    <span class="btn-beta-badge">Google Form</span>
+                </a>
                 
                 <span class="btn-caption">
                     <svg viewBox="0 0 20 20" fill="currentColor">
@@ -1005,17 +1067,17 @@
                         </svg>
                     </button>
                     <div class="arch-drawer" id="archDrawer">
-                        <a href="{{ asset('downloads/LCMWorld-v1.0.1-arm64.apk') }}" download class="arch-row">
+                        <a href="{{ asset('downloads/LCMWorld-v1.0.3-arm64.apk') }}" download class="arch-row">
                             <span class="arch-row-name">⚡ ARM64-v8a (64-bit Modern Devices)</span>
-                            <span class="arch-row-size">18.4 MB (Default)</span>
+                            <span class="arch-row-size">18.0 MB (Default)</span>
                         </a>
-                        <a href="{{ asset('downloads/LCMWorld-v1.0.1-armv7.apk') }}" download class="arch-row">
+                        <a href="{{ asset('downloads/LCMWorld-v1.0.3-armv7.apk') }}" download class="arch-row">
                             <span class="arch-row-name">📱 ARMeabi-v7a (32-bit Legacy Devices)</span>
-                            <span class="arch-row-size">15.9 MB</span>
+                            <span class="arch-row-size">15.4 MB</span>
                         </a>
-                        <a href="{{ asset('downloads/LCMWorld-v1.0.1-universal.apk') }}" download class="arch-row">
-                            <span class="arch-row-name">📦 Universal APK (All Android Architectures)</span>
-                            <span class="arch-row-size">51.8 MB</span>
+                        <a href="{{ asset('downloads/LCMWorld-latest.apk') }}" download class="arch-row">
+                            <span class="arch-row-name">📦 Latest Stable Build (Universal Fallback)</span>
+                            <span class="arch-row-size">18.0 MB</span>
                         </a>
                     </div>
                 </div>
